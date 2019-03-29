@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo/calculator.dart';
+import 'package:SimpleCalculator/calculator.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,14 +7,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'hello world',
+      title: 'Simple Calculator',
       theme: ThemeData(
         accentColor: Colors.grey,
         primaryColor: Colors.lightBlue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('helloworld'),
+          title: Text('Simple Calculator Written by CG'),
         ),
         body: _Main(),
       ),
@@ -44,9 +44,6 @@ enum EState{
 }
 
 class _MainState extends State<_Main> {
-  List<Opareator> _ops = [];
-  List<double> _nums = [];
-  double _result = 0.0;
   String _str = '';
 
   EState _eState = EState.I;

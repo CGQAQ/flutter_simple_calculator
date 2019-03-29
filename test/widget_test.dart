@@ -5,7 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:demo/calculator.dart';
+import 'package:SimpleCalculator/calculator.dart';
 
 void main() {
   var a = Calculator.parse('1+2*3/4+5');

@@ -39,9 +39,10 @@ class Calculator {
     StringBuffer temp = StringBuffer();
     _results = ListQueue();
 
+    var allowMinus = true;
     for (var char in expresson.runes) {
       var s = String.fromCharCode(char);
-      if (s != '+' && s != '-' && s != '*' && s != '/' && s != '^') {
+      if ((s != '+' && s != '-' && s != '*' && s != '/' && s != '^') || (allowMinus == true && s == '-')) {
         temp.write(s);
       } else {
         _results.addFirst(_Token.number(num.parse(temp.toString()))); //
@@ -92,6 +93,7 @@ class Calculator {
           default:
         }
       }
+      allowMinus = false;
     }
     if (temp.isNotEmpty) {
       _results.addFirst(_Token.number(num.parse(temp.toString())));
@@ -106,35 +108,35 @@ class Calculator {
   /// final result
   ///
   num getResult() {
-    ListQueue<num> results_ = ListQueue();
+    ListQueue<num> results = ListQueue();
     ListQueue<_Token> temp =ListQueue.from(_results);
     for (var item in temp.toList().reversed) {
       if (item.type == _Type.Number) {
-        results_.addFirst(temp.removeLast()._n);
+        results.addFirst(temp.removeLast()._n);
       } else if (item.type == _Type.Operator) {
-        var b = results_.removeFirst(), a = results_.removeFirst();
+        var b = results.removeFirst(), a = results.removeFirst();
 
         switch (temp.removeLast()._o) {
           case _Ops.Plus:
-            results_.addFirst(a + b);
+            results.addFirst(a + b);
             break;
           case _Ops.Minus:
-            results_.addFirst(a - b);
+            results.addFirst(a - b);
             break;
           case _Ops.Times:
-            results_.addFirst(a * b);
+            results.addFirst(a * b);
             break;
           case _Ops.Obelus:
-            results_.addFirst(a / b);
+            results.addFirst(a / b);
             break;
           case _Ops.Power:
-            results_.addFirst(pow(a, b));
+            results.addFirst(pow(a, b));
             break;
           default:
         }
       }
     }
-    return results_.first;
+    return results.first;
   }
 
   ///
