@@ -85,7 +85,7 @@ class _MainState extends State<_Main> {
                             });
                           }),
                           numpad('DEL', (){}),
-                          numpad('3', (){}),
+                          numpad('^', (){}),
                           numpad('+', (){}),
                         ],
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
